@@ -1,27 +1,35 @@
-// 인터페이스는 자바스크립트로 컴파일되지 않습니다. 드물게 자바스크립트에 인터페이스 코드가 필요하다면, 인터페이스 대신 클래스를 사용합니다.
-class Human {
-  // public으로 변수들을 지정했기 때문에 클래스 외부에서도 접근 가능합니다.
-  // public이 아닌 private으로 지정한다면, 해당 변수는 해당 클래스 안에서만 사용 가능합니다.
-  public name: String;
-  public age: number;
-  public gender: string;
+// 많은 타입과 함수들이 나올땐 타입스크립트의 장점이 잘 발휘 됩니다. 들어와서는 안될 자료들이 들어오는 것을 막을 수 있기 때문입니다.
 
-  // 생성자. 클래스의 객체가 만들어질 때 호출되는 메서드.
-  constructor(name: string, age: number, gender: string) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+// 블록체인의 기본 단위인 블록 클래스를 작성합니다.
+class Block {
+  public index: Number;
+  public hash: String;
+  public previousHash: String;
+  public data: String;
+  public timestamp: Number;
+
+  constructor(
+    index: Number,
+    hash: String,
+    previousHash: String,
+    data: String,
+    timestamp: Number
+  ) {
+    this.index = index;
+    this.hash = hash;
+    this.previousHash = previousHash;
+    this.data = data;
+    this.timestamp = timestamp;
   }
 }
 
-// kang은 Human클래스의 객체.
-const kang = new Human("kang", 26, "male");
+// 첫 블록 생성
+const genesisBlock: Block = new Block(0, "20202020202", "", "Hello", 123456);
 
-const sayHi = (person: Human): String => {
-  return `Hello ${person.name}, you're ${person.age}, and you're a ${person.gender}`;
-};
+// 블록체인이라는 것은 블록들이 연결된 것 입니다. 블록체인의 형태는 블록의 배열입니다.
+let blockchain: [Block] = [genesisBlock];
 
-console.log(sayHi(kang));
+console.log(blockchain);
 
 // TypeScript에게 모듈임을 알립니다.
 export {};
