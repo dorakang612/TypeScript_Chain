@@ -2,8 +2,12 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES2015",
-    "sourceMap": true
+    "sourceMap": true,
+    // 컴파일된 파일들이 들어갈 경로입니다.
+    "outDir": "dist"
   },
-  "include": ["index.ts"],
+  // src에 있는 모든 파일을 컴파일 합니다.
+  "include": ["src/**/*"],
+  // 컴파일에서 제외할 파일 입니다.
   "exclude": ["node_modules"]
 }
